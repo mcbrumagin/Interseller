@@ -1,0 +1,14 @@
+html {
+  background-color: #000;
+  color: #fff;
+  font-family: monospace;
+  font-size: 50%;
+}
+
+body {
+  font-size: 12pt;
+}
+
+.txt {
+  margin: .5rem 1rem;
+}
