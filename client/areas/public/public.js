@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute, Link } from 'react-router'
+import { DoubleMarkdownComponent } from 'meteor/universe:react-markdown-wysiwyg'
 
 const getPublicNavigation = () => {
   let linkNames = ['Home', 'About', 'Blog', 'Shop']
@@ -13,47 +14,56 @@ const getPublicNavigation = () => {
   return <ul>{linkItems}</ul>
 }
 
-export const PublicArea = React.createClass({
-  propTypes: {
-    children: React.PropTypes.element.isRequired,
-  },
+export class PublicArea extends React.Component {
   render() {
     return <div id="public-area">
       {getPublicNavigation()}
       {this.props.children}
     </div>
   }
-})
+}
+PublicArea.propTypes = {
+  children: React.PropTypes.element.isRequired
+}
 
-export const Index = React.createClass({
+export class Index extends React.Component {
   render() {
     return <div id="index">
       <h1>Welcome!</h1>
       <p>This page is pretty much empty</p>
     </div>
   }
-})
+}
 
-export const About = React.createClass({
+export class About extends React.Component {
+
+  updateAboutContent(content) {
+    updateAbout.call({content}, (err, {content}) => console.log('Result: ' + content))
+  }
+
   render() {
     return <div id="about">
-      <h1>About</h1>
+      {
+        Meteor.user.isLoggedIn
+        ? <DoubleMarkdownComponent markdown={"Temp"} onChange={this.updateAboutContent}/>
+        : <div>Nope</div>
+      }
     </div>
   }
-})
+}
 
-export const Blog = React.createClass({
+export class Blog extends React.Component {
   render() {
     return <div id="blog">
       <h1>Blog</h1>
     </div>
   }
-})
+}
 
-export const Shop = React.createClass({
+export class Shop extends React.Component {
   render() {
     return <div id="shop">
       <h1>Shop</h1>
     </div>
   }
-})
+}

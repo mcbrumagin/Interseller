@@ -12,3 +12,12 @@ body {
 .txt {
   margin: .5rem 1rem;
 }
+
+.editor {
+  background-color: #000;
+  color: #fff;
+}
+
+.rc-tabs {
+  margin: 2rem;
+}

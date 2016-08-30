@@ -22,9 +22,21 @@ export default (
   <Router history={ browserHistory }>
     <Route path="/" component={ PublicArea }>
       <IndexRoute name="Home" component={ Index } />
-      <Route path="about" name="About" component={ About } />
-      <Route path="blog" name="Blog" component={ Blog } />
-      <Route path="shop" name="Shop" component={ Shop } />
+      {
+        Meteor.settings.public.isAboutEnabled
+        ? <Route path="about" name="About" component={ About } />
+        : <Empty />
+      }
+      {
+        Meteor.settings.public.isBlogEnabled
+        ? <Route path="blog" name="Blog" component={ Blog } />
+        : <Empty />
+      }
+      {
+        Meteor.settings.public.isShopEnabled
+        ? <Route path="shop" name="Shop" component={ Shop } />
+        : <Empty />
+      }
     </Route>
     <Route path="login" component={ Login } />
     {

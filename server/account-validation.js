@@ -8,7 +8,7 @@ Accounts.validateNewUser((user) => {
       "Signups are disabled, please contact the site owner: "
       + Meteor.settings.public.contactEmail
     )
-  
+
   new SimpleSchema({
     _id: { type: String },
     username: { type: String },
