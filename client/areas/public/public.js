@@ -1,6 +1,7 @@
 import React from 'react'
+import { composeWithTracker } from 'react-komposer'
 import { Route, IndexRoute, Link } from 'react-router'
-import { DoubleMarkdownComponent } from 'meteor/universe:react-markdown-wysiwyg'
+import { Editor, EditorState, ContentState, RichUtils } from 'draft-js'
 
 const getPublicNavigation = () => {
   let linkNames = ['Home', 'About', 'Blog', 'Shop']
@@ -31,23 +32,6 @@ export class Index extends React.Component {
     return <div id="index">
       <h1>Welcome!</h1>
       <p>This page is pretty much empty</p>
-    </div>
-  }
-}
-
-export class About extends React.Component {
-
-  updateAboutContent(content) {
-    updateAbout.call({content}, (err, {content}) => console.log('Result: ' + content))
-  }
-
-  render() {
-    return <div id="about">
-      {
-        Meteor.user.isLoggedIn
-        ? <DoubleMarkdownComponent markdown={"Temp"} onChange={this.updateAboutContent}/>
-        : <div>Nope</div>
-      }
     </div>
   }
 }

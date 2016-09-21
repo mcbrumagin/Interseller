@@ -1,12 +1,9 @@
 import React from 'react'
 import { Icon } from '../../components/common.js'
 import { Link, browserHistory } from 'react-router'
-import { DoubleMarkdownComponent } from 'meteor/universe:react-markdown-wysiwyg'
+import { Editor, EditorState } from 'draft-js'
 
 export class Admin extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   logout() {
     Meteor.logout(() => browserHistory.push('/login'))
@@ -28,9 +25,6 @@ Admin.propTypes = {
 }
 
 export class Dashboard extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render() {
     return <div id="dashboard">
@@ -45,7 +39,7 @@ export class Dashboard extends React.Component {
             Since I am a trusted admin, I don't need to worry about being trusted with this power.
             `}
         </p>
-        <DoubleMarkdownComponent markdown='# Hello' onChange={console.log.bind(console)}/>
+        <Editor editorState='# Hello' onChange={console.log.bind(console)}/>
       </div>
     </div>
   }

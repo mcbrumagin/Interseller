@@ -1,6 +1,4 @@
 html {
-  background-color: #000;
-  color: #fff;
   font-family: monospace;
   font-size: 50%;
 }
@@ -11,13 +9,4 @@ body {
 
 .txt {
   margin: .5rem 1rem;
-}
-
-.editor {
-  background-color: #000;
-  color: #fff;
-}
-
-.rc-tabs {
-  margin: 2rem;
 }
