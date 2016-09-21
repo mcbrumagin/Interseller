@@ -12,10 +12,17 @@ class About extends React.Component {
     }
   }
 
-  updateAboutContent(content) {
-    console.log(content)
-    //updateAbout.call({content}, (err, {content}) => console.log('Result: ' + content))
-    this.state.editorState = content
+  updateAboutContent(editorState) {
+    let page = Pages.findOne({title: 'about'})
+    let content = editorState.getCurrentContent().getPlainText()
+
+    savePage.call({
+      id: page._id,
+      title: page.title,
+      content: content
+    }, (err) => err && console.error(err))
+
+    this.state.editorState = editorState
     this.setState(this.state)
   }
 
